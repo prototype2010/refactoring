@@ -1,3 +1,3 @@
-require_relative 'account'
+require_relative './src/initializer'
 
-Account.new.console
+BankTerminal.new.start
