@@ -36,7 +36,7 @@ commands:
       - checkout
       - restore_cache:
           key: *bundle_cache
-      - run: bundle update --bundler && bundle install --path vendor/bundle
+      - run: apt install cmake && bundle update --bundler && bundle install --path vendor/bundle
       - save_cache:
           key: *bundle_cache
           paths:
