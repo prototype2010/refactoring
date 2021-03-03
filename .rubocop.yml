@@ -25,11 +25,16 @@ Metrics/BlockLength:
   Exclude:
     - 'Gemfile'
     - 'spec/**/*.rb'
+RSpec/AnyInstance:
+  Exclude:
+    - 'spec/**/*.rb'
 
 Metrics/LineLength:
   Max: 120
-  IgnoredPatterns: ['puts']
+  IgnoredPatterns: ['puts','output']
 
+Metrics/AbcSize:
+  IgnoredMethods: ['send_money','destroy_card','send','',]
 
 Documentation:
   Enabled: false

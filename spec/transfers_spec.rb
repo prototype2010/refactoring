@@ -9,20 +9,20 @@ class TransfersHelper
   end
 end
 
+TRANSFER_PHRASES = {
+  choose_card_withdrawing: 'Choose the card for withdrawing:',
+  choose_card_putting: 'Choose the card for putting:',
+  choose_card_sending: 'Choose the card for sending:',
+  recipient_card: 'Enter the recipient card:',
+  withdraw_amount: 'Input the amount of money you want to withdraw',
+  send_amount: 'Input the amount of money you want to send',
+  put_amount: 'Input the amount of money you want to put on your card',
+  not_enough_money: 'You don\'t have enough money on card for such operation',
+  incorrect_sum: 'You must input correct amount of money'
+
+}.freeze
+
 RSpec.describe Transfers do
-  TRANSFER_PHRASES = {
-    choose_card_withdrawing: 'Choose the card for withdrawing:',
-    choose_card_putting: 'Choose the card for putting:',
-    choose_card_sending: 'Choose the card for sending:',
-    recipient_card: 'Enter the recipient card:',
-    withdraw_amount: 'Input the amount of money you want to withdraw',
-    send_amount: 'Input the amount of money you want to send',
-    put_amount: 'Input the amount of money you want to put on your card',
-    not_enough_money: 'You don\'t have enough money on card for such operation',
-    incorrect_sum: 'You must input correct amount of money'
-
-  }.freeze
-
   subject(:transfer_helper) { TransfersHelper.new }
 
   context 'when withdraw money' do
