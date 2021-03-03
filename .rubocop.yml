@@ -15,10 +15,6 @@ RSpec/ExampleLength:
 Metrics/MethodLength:
   Max: 20
 
-Layout/LineLength:
-  Exclude:
-    - 'Gemfile'
-    -
 RSpec/SubjectStub:
   Enabled: false
 
@@ -32,6 +28,8 @@ Metrics/BlockLength:
 
 Metrics/LineLength:
   Max: 120
+  IgnoredPatterns: ['puts']
+
 
 Documentation:
   Enabled: false

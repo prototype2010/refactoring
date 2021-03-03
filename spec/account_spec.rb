@@ -25,7 +25,7 @@ RSpec.describe Account do
     expect(account.cards.first).to be_instance_of(UsualCard)
   end
 
-  it 'virtual card can be created' do
+  it 'virtual card cannot be created' do
     expect { account.create_card(nil) }.to raise_error(WrongCardTypeError)
   end
 

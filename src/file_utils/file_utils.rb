@@ -14,11 +14,11 @@ module FileUtils
   end
 
   def find_account(login, password)
-    account = accounts.find { |account| account.login == login && account.password == password }
+    found_account = accounts.find { |account| account.login == login && account.password == password }
 
-    puts 'There is no account with given credentials' unless account
+    puts 'There is no account with given credentials' unless found_account
 
-    account
+    found_account
   end
 
   def update_account_info(account)
