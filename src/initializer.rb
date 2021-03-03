@@ -33,7 +33,6 @@ require_relative './cards/capitalist_card'
 require_relative './cards/virtual_card'
 require_relative './cards/cards_factory'
 require_relative './cards/usual_card'
-
 require_relative 'account'
 
 require_relative './bank_terminal'
