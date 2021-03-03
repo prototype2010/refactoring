@@ -70,7 +70,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.17.3)
+  bundler
   fasterer
   pry
   rspec (~> 3.10)
