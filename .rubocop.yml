@@ -12,6 +12,9 @@ RSpec/MultipleExpectations:
 RSpec/ExampleLength:
   Max: 10
 
+RSpec/SubjectStub:
+  Enabled: false
+
 RSpec/MessageSpies:
   Enabled: false
 

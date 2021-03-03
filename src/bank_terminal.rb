@@ -41,19 +41,13 @@ class BankTerminal
   end
 
   def load
-    loop do
-      return create_the_first_account if accounts.empty?
+    return create_the_first_account if accounts.empty?
 
-      puts 'Enter your login'
-      login = get_input
-      puts 'Enter your password'
-      password = get_input
-
-      sign_in(login, password)
-
-      break
-    end
-
+    puts 'Enter your login'
+    login = get_input
+    puts 'Enter your password'
+    password = get_input
+    sign_in(login, password)
     main_menu
   end
 
