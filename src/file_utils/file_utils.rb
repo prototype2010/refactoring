@@ -30,13 +30,13 @@ module FileUtils
   def find_card_by_number(card_number)
     raise WrongCardFormat if card_number.length != 16
 
-    card = accounts.map(&:cards)
+    found_card = accounts.map(&:cards)
                    .flatten
                    .find { |card| card[:number] == card_number }
 
-    raise CardDoesNotExist if card.nil?
+    raise CardDoesNotExist if found_card.nil?
 
-    card
+    found_card
   end
 
   def save(accounts)

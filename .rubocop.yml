@@ -33,6 +33,9 @@ Metrics/LineLength:
   Max: 120
   IgnoredPatterns: ['puts','output']
 
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
 Metrics/AbcSize:
   IgnoredMethods: ['send_money','destroy_card','send','',]
 

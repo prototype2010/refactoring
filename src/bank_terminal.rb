@@ -34,7 +34,7 @@ class BankTerminal
     puts '- If you want to create account - press `create`'
     puts '- If you want to load account - press `load`'
     puts '- If you want to exit - press `exit`'
-    shortcut = get_input.to_sym
+    shortcut = input.to_sym
     return initial_menu.dig(shortcut, :command).call if initial_menu.key?(shortcut)
 
     exit
@@ -44,21 +44,21 @@ class BankTerminal
     return create_the_first_account if accounts.empty?
 
     puts 'Enter your login'
-    login = get_input
+    login = input
     puts 'Enter your password'
-    password = get_input
+    password = input
     sign_in(login, password)
     main_menu
   end
 
   def create_the_first_account
     puts 'There is no active accounts, do you want to be the first?[y/n]'
-    return create if get_input == 'y'
+    return create if input == 'y'
 
     start
   end
 
-  def get_input
+  def input
     gets.chomp
   end
 end

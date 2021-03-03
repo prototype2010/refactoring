@@ -19,7 +19,7 @@ module TerminalMenu
 
       print_shortcut_info(card_shortcuts)
 
-      shortcut = get_input.to_sym
+      shortcut = input.to_sym
 
       return card_shortcuts.dig(shortcut, :command).call if card_shortcuts.key?(shortcut)
 
