@@ -146,11 +146,15 @@ RSpec.describe Registration do
       end
 
       it 'prints login errors' do
-        expect { registration.start.print_errors }.to output(/#{ACCOUNT_VALIDATION_PHRASES[:login][:shorter]}/).to_stdout
+        expect do
+          registration.start.print_errors
+        end.to output(/#{ACCOUNT_VALIDATION_PHRASES[:login][:shorter]}/).to_stdout
       end
 
       it 'prints password errors' do
-        expect { registration.start.print_errors }.to output(/#{ACCOUNT_VALIDATION_PHRASES[:password][:shorter]}/).to_stdout
+        expect do
+          registration.start.print_errors
+        end.to output(/#{ACCOUNT_VALIDATION_PHRASES[:password][:shorter]}/).to_stdout
       end
     end
 

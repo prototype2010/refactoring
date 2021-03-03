@@ -14,11 +14,11 @@ RSpec/ExampleLength:
 
 Metrics/MethodLength:
   Max: 20
-  IgnoredMethods: ['create_card','destroy_card']
 
 Layout/LineLength:
-  IgnoredMethods: ['create_card','destroy_card']
-
+  Exclude:
+    - 'Gemfile'
+    -
 RSpec/SubjectStub:
   Enabled: false
 

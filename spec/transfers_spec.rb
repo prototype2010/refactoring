@@ -184,13 +184,13 @@ RSpec.describe Transfers do
 
     context 'when send money' do
       context 'when successful' do
-        let(:registration) {
+        let(:registration) do
           instance_double('Registration',
                           name: 'Boris',
                           age: 45,
                           password: 'asdasd',
                           login: 'Boris4565')
-        }
+        end
         let(:account) do
           account = Account.new(registration)
           account.create_card('capitalist')
