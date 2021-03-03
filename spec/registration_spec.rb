@@ -28,7 +28,7 @@ RSpec.describe Registration do
 
   subject(:registration) { described_class.new }
 
-  context 'successful registration' do
+  context 'when successful registration' do
     let(:name) { 'Boris' }
     let(:age) { '26' }
     let(:login) { 'boriska2626' }
@@ -90,7 +90,7 @@ RSpec.describe Registration do
     end
   end
 
-  context 'unsuccessful registration' do
+  context 'when unsuccessful registration' do
     let(:name) { '' }
     let(:age) { 'ZZ' }
     let(:login) { '' }
@@ -134,7 +134,7 @@ RSpec.describe Registration do
       end
     end
 
-    context 'unsuccessful registration with other errors' do
+    context 'when unsuccessful registration with other errors' do
       let(:name) { 'X' * 50 }
       let(:age) { 'ZZ' }
       let(:login) { 'X' * 50 }
@@ -154,7 +154,7 @@ RSpec.describe Registration do
       end
     end
 
-    context 'unsuccessful registration when login exists' do
+    context 'when unsuccessful registration when login exists' do
       let(:name) { 'X' * 50 }
       let(:age) { 'ZZ' }
       let(:login) { 'X' * 50 }

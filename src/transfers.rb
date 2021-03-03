@@ -4,16 +4,14 @@ module Transfers
     puts 'Choose the card for withdrawing:'
     puts "press `exit` to exit\n"
 
-    loop do
-      answer = gets.chomp
-      break if answer == 'exit'
+    answer = gets.chomp
+    return if answer == 'exit'
 
-      current_card = @current_account.card_by_index(answer)
+    current_card = @current_account.card_by_index(answer)
 
-      puts 'Input the amount of money you want to withdraw'
-      current_card.withdraw(gets.chomp.to_i)
-      @current_account.update
-    end
+    puts 'Input the amount of money you want to withdraw'
+    current_card.withdraw(gets.chomp.to_i)
+    @current_account.update
   rescue NotEnoughMoney,
          InputCorrectAmount,
          WrongCardNumber,
@@ -27,21 +25,15 @@ module Transfers
     puts 'Choose the card for putting:'
 
     puts "press `exit` to exit\n"
-    loop do
-      answer = gets.chomp
-      break if answer == 'exit'
+    answer = gets.chomp
+    return if answer == 'exit'
 
-      current_card = @current_account.card_by_index(answer)
+    current_card = @current_account.card_by_index(answer)
 
-      loop do
-        puts 'Input the amount of money you want to put on your card'
+    puts 'Input the amount of money you want to put on your card'
 
-        current_card.put(gets.chomp.to_i)
-        @current_account.update
-
-        return
-      end
-    end
+    current_card.put(gets.chomp.to_i)
+    @current_account.update
   rescue InputCorrectAmount,
          TaxIsHigherThanAmountError,
          NoActiveCardsError,

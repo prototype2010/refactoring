@@ -15,7 +15,7 @@ RSpec.describe BankTerminal do
     allow(terminal).to receive(:exit)
   end
 
-  context 'exit is possible' do
+  context 'when exit is possible' do
     let(:commands) { ['exit'] }
 
     before do
@@ -28,7 +28,7 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'create account' do
+  context 'when create account' do
     let(:commands) { %w[create Boris 45 thelogin thepassword exit] }
 
     before do
@@ -42,7 +42,7 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'load account' do
+  context 'when load account' do
     let(:commands) { %w[load thelogin thepassword exit] }
 
     before do
@@ -56,7 +56,7 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'create first account' do
+  context 'when create first account' do
     let(:commands) { %w[load y thelogin thepassword exit] }
 
     before do
@@ -72,7 +72,7 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'show commands card work' do
+  context 'when show commands card work' do
     let(:commands) { %w[SC exit] }
 
     before do
@@ -87,7 +87,7 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'show cards works from menu' do
+  context 'when show cards works from menu' do
     let(:commands) { %w[SC exit] }
 
     before do
@@ -102,7 +102,7 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'put money works from menu' do
+  context 'when put money works from menu' do
     let(:commands) { %w[PM exit] }
 
     before do
@@ -117,7 +117,7 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'withdraw money works from menu' do
+  context 'when withdraw money works from menu' do
     let(:commands) { %w[WM exit] }
 
     before do
@@ -132,7 +132,7 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'send money works from menu' do
+  context 'when send money works from menu' do
     let(:commands) { %w[SM exit] }
 
     before do
@@ -147,7 +147,7 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'destroy account works from menu' do
+  context 'when destroy account works from menu' do
     let(:commands) { %w[DA NO exit] }
 
     before do
@@ -162,7 +162,7 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'destroy account works from menu' do
+  context 'when create card works from menu' do
     let(:commands) { %w[CC virtual exit] }
 
     before do
@@ -177,7 +177,7 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'destroy card works from menu' do
+  context 'when destroy card works from menu' do
     let(:commands) { %w[DC 1 y exit] }
 
     before do

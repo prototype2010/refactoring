@@ -25,8 +25,8 @@ RSpec.describe Transfers do
 
   subject(:transfer_helper) { TransfersHelper.new }
 
-  context 'withdraw money' do
-    context 'successful' do
+  context 'when withdraw money' do
+    context 'when successful' do
       let(:account) do
         account = Account.new(instance_double('Registration',
                                               name: 'Boris',
@@ -71,8 +71,8 @@ RSpec.describe Transfers do
       end
     end
 
-    context 'failure' do
-      context 'not enough money' do
+    context 'when failure' do
+      context 'when not enough money' do
         let(:account) do
           account = Account.new(instance_double('Registration',
                                                 name: 'Boris',
@@ -103,8 +103,8 @@ RSpec.describe Transfers do
     end
   end
 
-  context 'put_money' do
-    context 'successful' do
+  context 'when put_money' do
+    context 'when successful' do
       let(:account) do
         account = Account.new(instance_double('Registration',
                                               name: 'Boris',
@@ -152,7 +152,7 @@ RSpec.describe Transfers do
       end
     end
 
-    context 'failure' do
+    context 'when failure' do
       let(:account) do
         account = Account.new(instance_double('Registration',
                                               name: 'Boris',
@@ -182,8 +182,8 @@ RSpec.describe Transfers do
       end
     end
 
-    context 'send money' do
-      context 'successful' do
+    context 'when send money' do
+      context 'when successful' do
         let(:registration) {
           instance_double('Registration',
                           name: 'Boris',

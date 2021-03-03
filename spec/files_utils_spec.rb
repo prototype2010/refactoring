@@ -27,7 +27,7 @@ RSpec.describe FileUtils do
     allow(file_util).to receive(:accounts).and_return([account])
   end
 
-  context 'finding card by number' do
+  context 'when finding card by number' do
     it 'find card by number is possible' do
       expect(file_util.find_card_by_number(card_number))
         .to eq(card)
