@@ -3,25 +3,24 @@ class FileUtilsHelper
 end
 
 RSpec.describe FileUtils do
-  subject {FileUtilsHelper.new}
+  subject { FileUtilsHelper.new }
 
-  let(:registration) {
+  let(:registration) do
     instance_double('Registration',
                     name: 'Boris',
                     age: 45,
                     password: 'thepassword',
                     login: 'thelogin',
-                    errors: [],
-                    )
-  }
-  let(:account) {
+                    errors: [])
+  end
+  let(:account) do
     new_account = Account.new(registration)
     new_account.create_card('capitalist')
 
     new_account
-  }
+  end
 
-  let(:card) {account.cards.first}
+  let(:card) { account.cards.first }
   let(:card_number) { card.number }
 
   before do
@@ -33,7 +32,5 @@ RSpec.describe FileUtils do
       expect(subject.find_card_by_number(card_number))
         .to eq(card)
     end
-
   end
-
 end

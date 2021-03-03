@@ -1,5 +1,5 @@
 module FileUtils
-  FILE_PATH = 'accounts.yml'
+  FILE_PATH = 'accounts.yml'.freeze
 
   def accounts
     if File.exist?(FILE_PATH)

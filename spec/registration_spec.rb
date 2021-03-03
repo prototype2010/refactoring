@@ -56,7 +56,7 @@ RSpec.describe Registration do
     end
 
     it 'returns valid object' do
-      expect(subject.start).to be_an_instance_of(Registration)
+      expect(subject.start).to be_an_instance_of(described_class)
     end
 
     it 'returns valid name' do
@@ -102,7 +102,7 @@ RSpec.describe Registration do
     end
 
     it 'prints name errors' do
-      ACCOUNT_VALIDATION_PHRASES[:name].values.each do |error_message|
+      ACCOUNT_VALIDATION_PHRASES[:name].each_value do |error_message|
         expect { subject.start.print_errors }.to output(/#{error_message}/).to_stdout
       end
     end

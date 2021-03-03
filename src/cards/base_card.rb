@@ -15,9 +15,10 @@ class BaseCard
   def resolve_tax_by_type(tax_type, amount)
     tax = @tax.send(tax_type)
 
-    if tax.is_a? FixedTax
+    case tax
+    when FixedTax
       tax.value
-    elsif tax.is_a? PercentageTax
+    when PercentageTax
       tax.value * amount
     else raise "Unknown tax type #{tax}"
     end
@@ -29,7 +30,7 @@ class BaseCard
 
   def withdraw(amount)
     raise 'Not a number' unless amount.is_a? Numeric
-    raise InputCorrectAmount if amount < 0
+    raise InputCorrectAmount if amount.negative?
     raise NotEnoughMoney unless withdraw_possible?(amount)
 
     @balance -= (amount + withdraw_tax(amount))

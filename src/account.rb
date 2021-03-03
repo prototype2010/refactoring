@@ -16,7 +16,7 @@ class Account
   end
 
   def create_card(card_type)
-    @cards = @cards.push(CardsFactory.create_card(card_type))
+    @cards.push(CardsFactory.create_card(card_type))
 
     update
   end

@@ -9,7 +9,6 @@ require_relative './taxes/percentage_tax'
 
 require_relative './terminal_menu'
 
-
 require_relative './exceptions/input_correct_amount'
 require_relative './exceptions/not_enough_money'
 require_relative './exceptions/wrong_card_number'
@@ -23,7 +22,6 @@ require_relative './taxes/base_card_tax'
 require_relative './taxes/capitalist_card_tax'
 require_relative './taxes/usual_card_tax'
 require_relative './taxes/virtual_card_tax'
-
 
 require_relative './file_utils/file_utils'
 
