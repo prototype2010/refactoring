@@ -14,6 +14,7 @@ RSpec/ExampleLength:
 
 Metrics/MethodLength:
   Max: 20
+  IgnoredMethods: ['card_shortcuts']
 
 RSpec/SubjectStub:
   Enabled: false
@@ -37,7 +38,10 @@ RSpec/MultipleMemoizedHelpers:
   Max: 10
 
 Metrics/AbcSize:
-  IgnoredMethods: ['send_money','destroy_card','send','',]
+  IgnoredMethods: ['send_money','destroy_card','send']
+
+Style/GuardClause:
+  IgnoredMethods: ['name_input']
 
 Documentation:
   Enabled: false

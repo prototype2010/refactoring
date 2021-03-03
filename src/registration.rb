@@ -23,9 +23,8 @@ class Registration
   def name_input
     puts 'Enter your name'
     @name = gets.chomp
-    unless @name != '' && @name[0].upcase == @name[0]
-      @errors.push('Your name must not be empty and starts with first upcase letter')
-    end
+    error_message = 'Your name must not be empty and starts with first upcase letter'
+    @errors.push(error_message) if @name.empty? || @name.capitalize != @name
   end
 
   def login_input

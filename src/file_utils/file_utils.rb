@@ -31,8 +31,8 @@ module FileUtils
     raise WrongCardFormat if card_number.length != 16
 
     found_card = accounts.map(&:cards)
-                   .flatten
-                   .find { |card| card[:number] == card_number }
+                         .flatten
+                         .find { |card| card[:number] == card_number }
 
     raise CardDoesNotExist if found_card.nil?
 
