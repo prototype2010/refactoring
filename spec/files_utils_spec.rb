@@ -3,7 +3,7 @@ class FileUtilsHelper
 end
 
 RSpec.describe FileUtils do
-  subject { FileUtilsHelper.new }
+  subject(:file_util) { FileUtilsHelper.new }
 
   let(:registration) do
     instance_double('Registration',
@@ -24,12 +24,12 @@ RSpec.describe FileUtils do
   let(:card_number) { card.number }
 
   before do
-    allow(subject).to receive(:accounts).and_return([account])
+    allow(file_util).to receive(:accounts).and_return([account])
   end
 
   context 'finding card by number' do
     it 'find card by number is possible' do
-      expect(subject.find_card_by_number(card_number))
+      expect(file_util.find_card_by_number(card_number))
         .to eq(card)
     end
   end

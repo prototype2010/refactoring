@@ -26,7 +26,7 @@ RSpec.describe Registration do
     }
   }.freeze
 
-  subject { described_class.new }
+  subject(:registration) { described_class.new }
 
   context 'successful registration' do
     let(:name) { 'Boris' }
@@ -36,57 +36,57 @@ RSpec.describe Registration do
     let(:commands) { [name, age, login, password] }
 
     before do
-      allow(subject).to receive_message_chain(:gets, :chomp).and_return(*commands)
+      allow(registration).to receive_message_chain(:gets, :chomp).and_return(*commands)
     end
 
     it 'requests name' do
-      expect { subject.start }.to output(/#{ASK_PHRASES[:name]}/).to_stdout
+      expect { registration.start }.to output(/#{ASK_PHRASES[:name]}/).to_stdout
     end
 
     it 'requests age' do
-      expect { subject.start }.to output(/#{ASK_PHRASES[:login]}/).to_stdout
+      expect { registration.start }.to output(/#{ASK_PHRASES[:login]}/).to_stdout
     end
 
     it 'requests login' do
-      expect { subject.start }.to output(/#{ASK_PHRASES[:password]}/).to_stdout
+      expect { registration.start }.to output(/#{ASK_PHRASES[:password]}/).to_stdout
     end
 
     it 'requests password' do
-      expect { subject.start }.to output(/#{ASK_PHRASES[:age]}/).to_stdout
+      expect { registration.start }.to output(/#{ASK_PHRASES[:age]}/).to_stdout
     end
 
     it 'returns valid object' do
-      expect(subject.start).to be_an_instance_of(described_class)
+      expect(registration.start).to be_an_instance_of(described_class)
     end
 
     it 'returns valid name' do
-      registration = subject.start
+      registration_object = registration.start
 
-      expect(registration.name).to be(name)
+      expect(registration_object.name).to be(name)
     end
 
     it 'returns valid age' do
-      registration = subject.start
+      registration_object = registration.start
 
-      expect(registration.age).to be(age.to_i)
+      expect(registration_object.age).to be(age.to_i)
     end
 
     it 'returns valid login' do
-      registration = subject.start
+      registration_object = registration.start
 
-      expect(registration.login).to be(login)
+      expect(registration_object.login).to be(login)
     end
 
     it 'returns valid password' do
-      registration = subject.start
+      registration_object = registration.start
 
-      expect(registration.password).to be(password)
+      expect(registration_object.password).to be(password)
     end
 
     it 'returns empty errors array' do
-      registration = subject.start
+      registration_object = registration.start
 
-      expect(registration.errors).to eq([])
+      expect(registration_object.errors).to eq([])
     end
   end
 
@@ -98,12 +98,12 @@ RSpec.describe Registration do
     let(:commands) { [name, age, login, password] }
 
     before do
-      allow(subject).to receive_message_chain(:gets, :chomp).and_return(*commands)
+      allow(registration).to receive_message_chain(:gets, :chomp).and_return(*commands)
     end
 
     it 'prints name errors' do
       ACCOUNT_VALIDATION_PHRASES[:name].each_value do |error_message|
-        expect { subject.start.print_errors }.to output(/#{error_message}/).to_stdout
+        expect { registration.start.print_errors }.to output(/#{error_message}/).to_stdout
       end
     end
 
@@ -112,7 +112,7 @@ RSpec.describe Registration do
         ACCOUNT_VALIDATION_PHRASES[:password][:present],
         ACCOUNT_VALIDATION_PHRASES[:password][:longer]
       ].each do |error_message|
-        expect { subject.start.print_errors }.to output(/#{error_message}/).to_stdout
+        expect { registration.start.print_errors }.to output(/#{error_message}/).to_stdout
       end
     end
 
@@ -122,7 +122,7 @@ RSpec.describe Registration do
         ACCOUNT_VALIDATION_PHRASES[:password][:longer],
         ACCOUNT_VALIDATION_PHRASES[:password][:exists]
       ].each do |error_message|
-        expect { subject.start.print_errors }.to output(/#{error_message}/).to_stdout
+        expect { registration.start.print_errors }.to output(/#{error_message}/).to_stdout
       end
     end
 
@@ -130,7 +130,7 @@ RSpec.describe Registration do
       [
         ACCOUNT_VALIDATION_PHRASES[:age][:length]
       ].each do |error_message|
-        expect { subject.start.print_errors }.to output(/#{error_message}/).to_stdout
+        expect { registration.start.print_errors }.to output(/#{error_message}/).to_stdout
       end
     end
 
@@ -142,15 +142,15 @@ RSpec.describe Registration do
       let(:commands) { [name, age, login, password] }
 
       before do
-        allow(subject).to receive_message_chain(:gets, :chomp).and_return(*commands)
+        allow(registration).to receive_message_chain(:gets, :chomp).and_return(*commands)
       end
 
       it 'prints login errors' do
-        expect { subject.start.print_errors }.to output(/#{ACCOUNT_VALIDATION_PHRASES[:login][:shorter]}/).to_stdout
+        expect { registration.start.print_errors }.to output(/#{ACCOUNT_VALIDATION_PHRASES[:login][:shorter]}/).to_stdout
       end
 
       it 'prints password errors' do
-        expect { subject.start.print_errors }.to output(/#{ACCOUNT_VALIDATION_PHRASES[:password][:shorter]}/).to_stdout
+        expect { registration.start.print_errors }.to output(/#{ACCOUNT_VALIDATION_PHRASES[:password][:shorter]}/).to_stdout
       end
     end
 
@@ -162,12 +162,12 @@ RSpec.describe Registration do
       let(:commands) { [name, age, login, password] }
 
       before do
-        allow(subject).to receive_message_chain(:gets, :chomp).and_return(*commands)
-        allow(subject).to receive(:login_exists?).and_return(true)
+        allow(registration).to receive_message_chain(:gets, :chomp).and_return(*commands)
+        allow(registration).to receive(:login_exists?).and_return(true)
       end
 
       it 'prints login errors' do
-        expect { subject.start.print_errors }.to output(/#{ACCOUNT_VALIDATION_PHRASES[:login][:exists]}/).to_stdout
+        expect { registration.start.print_errors }.to output(/#{ACCOUNT_VALIDATION_PHRASES[:login][:exists]}/).to_stdout
       end
     end
   end

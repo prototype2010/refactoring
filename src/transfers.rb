@@ -10,13 +10,9 @@ module Transfers
 
       current_card = @current_account.card_by_index(answer)
 
-      loop do
-        puts 'Input the amount of money you want to withdraw'
-        current_card.withdraw(gets.chomp.to_i)
-        @current_account.update
-
-        return
-      end
+      puts 'Input the amount of money you want to withdraw'
+      current_card.withdraw(gets.chomp.to_i)
+      @current_account.update
     end
   rescue NotEnoughMoney,
          InputCorrectAmount,
@@ -67,16 +63,11 @@ module Transfers
     puts 'Enter the recipient card:'
     recipient_card = find_card_by_number(gets.chomp)
 
-    loop do
-      puts 'Input the amount of money you want to send'
+    puts 'Input the amount of money you want to send'
 
-      sender_card.send(gets.chomp.to_i, recipient_card)
-      update_account_info(@current_account)
-
-      break
-    end
-  rescue InputCorrectAmount,
-         CardDoesNotExist,
+    sender_card.send(gets.chomp.to_i, recipient_card)
+    update_account_info(@current_account)
+  rescue CardDoesNotExist,
          TaxIsHigherThanAmountError,
          NoActiveCardsError,
          WrongCardNumber,
