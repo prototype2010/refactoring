@@ -87,21 +87,6 @@ RSpec.describe BankTerminal do
     end
   end
 
-  context 'when show cards works from menu' do
-    let(:commands) { %w[SC exit] }
-
-    before do
-      allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card('capitalist')
-      terminal.instance_variable_set(:@current_account, account)
-    end
-
-    it 'prints cards list' do
-      expect { terminal.main_menu }
-        .to output(/#{account.cards.first.number}/).to_stdout
-    end
-  end
-
   context 'when put money works from menu' do
     let(:commands) { %w[PM exit] }
 
