@@ -9,7 +9,7 @@ class BaseCard
   end
 
   def resolve_tax_by_type(tax_type, amount)
-    tax = @tax.send(tax_type)
+    tax = @tax.public_send(tax_type)
 
     case tax
     when FixedTax
