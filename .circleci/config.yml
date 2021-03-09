@@ -37,9 +37,10 @@ commands:
       - restore_cache:
           key: *bundle_cache
       - run:
-        - command: |
-                 sudo apt-get install cmake
-                 bundle install --path vendor/bundle
+          name: install deps
+          command: |
+            apt install cmake
+            bundle update --bundler && bundle install --path vendor/bundle
       - save_cache:
           key: *bundle_cache
           paths:
