@@ -1,5 +1,5 @@
 class BankTerminal
-  include FileUtils
+  include AccountsRegister
   include Transfers
   include TerminalMenu
 

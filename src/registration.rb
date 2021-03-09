@@ -1,5 +1,5 @@
 class Registration
-  include FileUtils
+  include AccountsRegister
 
   attr_reader :errors, :login, :password, :name, :age
 

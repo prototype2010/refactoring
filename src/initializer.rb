@@ -23,7 +23,7 @@ require_relative './taxes/capitalist_card_tax'
 require_relative './taxes/usual_card_tax'
 require_relative './taxes/virtual_card_tax'
 
-require_relative './file_utils/file_utils'
+require_relative './accounts_register/accounts_register'
 
 require_relative './registration'
 require_relative './transfers'

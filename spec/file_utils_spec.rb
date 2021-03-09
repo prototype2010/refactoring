@@ -1,9 +1,9 @@
-class FileUtilsHelper
-  include FileUtils
+class AccountsRegisterHelper
+  include AccountsRegister
 end
 
-RSpec.describe FileUtils do
-  subject(:file_util) { FileUtilsHelper.new }
+RSpec.describe AccountsRegister do
+  subject(:file_util) { AccountsRegisterHelper.new }
 
   let(:registration) do
     instance_double('Registration',

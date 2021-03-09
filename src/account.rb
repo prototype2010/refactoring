@@ -1,5 +1,5 @@
 class Account
-  include FileUtils
+  include AccountsRegister
 
   attr_reader :name, :login, :cards, :password
 

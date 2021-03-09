@@ -1,4 +1,4 @@
-module FileUtils
+module AccountsRegister
   FILE_PATH = 'accounts.yml'.freeze
 
   def accounts

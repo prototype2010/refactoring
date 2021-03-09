@@ -1,6 +1,6 @@
 class TransfersHelper
   include Transfers
-  include FileUtils
+  include AccountsRegister
 
   attr_accessor :current_account
 
