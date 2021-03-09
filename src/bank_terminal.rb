@@ -35,6 +35,7 @@ class BankTerminal
     puts '- If you want to load account - press `load`'
     puts '- If you want to exit - press `exit`'
     shortcut = input.to_sym
+
     return initial_menu.dig(shortcut, :command).call if initial_menu.key?(shortcut)
 
     exit

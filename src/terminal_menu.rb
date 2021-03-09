@@ -1,14 +1,8 @@
 module TerminalMenu
   def initial_menu
     {
-      create: {
-        description: nil,
-        command: -> { create }
-      },
-      load: {
-        description: nil,
-        command: -> { load }
-      }
+      create: { description: nil, command:-> { create }},
+      load: { description: nil,command:  -> { load }}
     }
   end
 
@@ -18,7 +12,6 @@ module TerminalMenu
       puts 'If you want to:'
 
       print_shortcut_info(card_shortcuts)
-
       shortcut = input.to_sym
 
       return card_shortcuts.dig(shortcut, :command).call if card_shortcuts.key?(shortcut)
@@ -29,43 +22,14 @@ module TerminalMenu
 
   def card_shortcuts
     {
-      SC: {
-        description: 'show all cards',
-        command: -> { @current_account.print_card_variant }
-      },
-      CC: {
-        description: 'create card',
-        command: -> { create_card }
-      },
-      DC: {
-        description: 'destroy card',
-        command: -> { destroy_card }
-      },
-      PM: {
-        description: 'put money on card',
-        command: -> { put_money }
-      },
-      WM: {
-        description: 'withdraw money on card',
-        command: -> { withdraw_money }
-      },
-      SM: {
-        description: 'send money to another card',
-        command: -> { send_money }
-      },
-      DA: {
-        description: 'destroy account',
-        command: lambda do
-          destroy_account
-          exit
-        end
-      },
-      exit: {
-        description: 'exit from account',
-        command: lambda do
-          exit
-        end
-      }
+      SC: { description: 'show all cards', command:-> { @current_account.print_card_variant } },
+      CC: {description: 'create card', command:-> { create_card }},
+      DC: {description: 'destroy card',command:-> { destroy_card }},
+      PM: {description: 'put money on card',command:  -> { put_money }},
+      WM: {description: 'withdraw money on card',command:-> { withdraw_money }},
+      SM: {description: 'send money to another card', command: -> { send_money }},
+      DA: {description: 'destroy account',command:-> { destroy_account }},
+      exit: {description: 'exit from account', command: -> {exit}}
     }
   end
 
@@ -110,7 +74,11 @@ module TerminalMenu
 
   def destroy_account
     puts 'Are you sure you want to destroy account?[y/n]'
-    @current_account.self_destruct if gets.chomp == 'y'
+
+    if gets.chomp == 'y'
+      @current_account.self_destruct
+      exit
+    end
   end
 
   def print_shortcut_info(shortcuts)
