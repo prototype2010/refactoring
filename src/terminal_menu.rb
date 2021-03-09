@@ -75,10 +75,10 @@ module TerminalMenu
   def destroy_account
     puts 'Are you sure you want to destroy account?[y/n]'
 
-    if gets.chomp == 'y'
-      @current_account.self_destruct
-      exit
-    end
+    return unless gets.chomp == 'y'
+
+    @current_account.self_destruct
+    exit
   end
 
   def print_shortcut_info(shortcuts)
