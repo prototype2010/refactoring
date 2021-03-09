@@ -1,8 +1,8 @@
 module TerminalMenu
   def initial_menu
     {
-      create: { description: nil, command:-> { create }},
-      load: { description: nil,command:  -> { load }}
+      create: { description: nil, command: -> { create } },
+      load: { description: nil, command: -> { load } }
     }
   end
 
@@ -22,14 +22,14 @@ module TerminalMenu
 
   def card_shortcuts
     {
-      SC: { description: 'show all cards', command:-> { @current_account.print_card_variant } },
-      CC: {description: 'create card', command:-> { create_card }},
-      DC: {description: 'destroy card',command:-> { destroy_card }},
-      PM: {description: 'put money on card',command:  -> { put_money }},
-      WM: {description: 'withdraw money on card',command:-> { withdraw_money }},
-      SM: {description: 'send money to another card', command: -> { send_money }},
-      DA: {description: 'destroy account',command:-> { destroy_account }},
-      exit: {description: 'exit from account', command: -> {exit}}
+      SC: { description: 'show all cards', command: -> { @current_account.print_card_variant } },
+      CC: { description: 'create card', command: -> { create_card } },
+      DC: { description: 'destroy card', command: -> { destroy_card } },
+      PM: { description: 'put money on card', command: -> { put_money } },
+      WM: { description: 'withdraw money on card', command: -> { withdraw_money } },
+      SM: { description: 'send money to another card', command: -> { send_money } },
+      DA: { description: 'destroy account', command: -> { destroy_account } },
+      exit: { description: 'exit from account', command: -> { exit } }
     }
   end
 
