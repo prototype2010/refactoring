@@ -36,7 +36,10 @@ commands:
       - checkout
       - restore_cache:
           key: *bundle_cache
-      - run: apt install cmake && bundle update --bundler && bundle install --path vendor/bundle
+      - run:
+        - command: |
+                 sudo apt-get install cmake
+                 bundle install --path vendor/bundle
       - save_cache:
           key: *bundle_cache
           paths:
