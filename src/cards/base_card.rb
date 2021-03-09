@@ -8,10 +8,6 @@ class BaseCard
     @number = 16.times.map { rand(10) }.join
   end
 
-  def [](prop)
-    public_send(prop)
-  end
-
   def resolve_tax_by_type(tax_type, amount)
     tax = @tax.send(tax_type)
 

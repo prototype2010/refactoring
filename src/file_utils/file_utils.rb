@@ -32,7 +32,7 @@ module FileUtils
 
     found_card = accounts.map(&:cards)
                          .flatten
-                         .find { |card| card[:number] == card_number }
+                         .find { |card| card.number == card_number }
 
     raise CardDoesNotExist if found_card.nil?
 

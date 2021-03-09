@@ -41,7 +41,7 @@ class Account
     raise NoActiveCardsError unless cards.any?
 
     @cards.each_with_index do |c, i|
-      puts "- #{c[:number]}, #{c[:type]}, press #{i + 1}"
+      puts "- #{c.number}, #{c.type}, press #{i + 1}"
     end
   end
 
