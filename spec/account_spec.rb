@@ -20,7 +20,7 @@ RSpec.describe Account do
   end
 
   it 'usual card can be created' do
-    account.create_card('usual')
+    account.create_card(Constants::CARD_TYPES[:USUAL])
 
     expect(account.cards.first).to be_instance_of(UsualCard)
   end
@@ -30,34 +30,34 @@ RSpec.describe Account do
   end
 
   it 'virtual card can be created' do
-    account.create_card('virtual')
+    account.create_card(Constants::CARD_TYPES[:VIRTUAL])
 
     expect(account.cards.first).to be_instance_of(VirtualCard)
   end
 
   it 'virtual card can be deleted' do
-    account.create_card('virtual')
+    account.create_card(Constants::CARD_TYPES[:VIRTUAL])
     account.destroy_card(1)
 
     expect(account.cards).to eq([])
   end
 
   it 'virtual card is printed' do
-    account.create_card('virtual')
+    account.create_card(Constants::CARD_TYPES[:VIRTUAL])
     card = account.cards.first
 
     expect { account.print_card_variant }.to output(/#{card.number}/).to_stdout
   end
 
   it 'card by index can be received' do
-    account.create_card('virtual')
+    account.create_card(Constants::CARD_TYPES[:VIRTUAL])
     account.create_card(Constants::CARD_TYPES[:CAPITALIST])
 
     expect(account.card_by_index(2)).to be_instance_of(CapitalistCard)
   end
 
   it 'card by index raises error' do
-    account.create_card('virtual')
+    account.create_card(Constants::CARD_TYPES[:VIRTUAL])
     account.create_card(Constants::CARD_TYPES[:CAPITALIST])
 
     expect { account.card_by_index(3) }.to raise_error(WrongCardNumber)
