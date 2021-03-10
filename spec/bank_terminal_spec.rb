@@ -77,7 +77,7 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card('capitalist')
+      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
       terminal.instance_variable_set(:@current_account, account)
     end
 
@@ -92,7 +92,7 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card('capitalist')
+      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
       terminal.instance_variable_set(:@current_account, account)
     end
 
@@ -107,7 +107,7 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card('capitalist')
+      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
       terminal.instance_variable_set(:@current_account, account)
     end
 
@@ -122,7 +122,7 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card('capitalist')
+      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
       terminal.instance_variable_set(:@current_account, account)
     end
 
@@ -137,7 +137,7 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card('capitalist')
+      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
       terminal.instance_variable_set(:@current_account, account)
     end
 
@@ -152,7 +152,7 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card('capitalist')
+      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
       terminal.instance_variable_set(:@current_account, account)
     end
 
@@ -167,7 +167,7 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card('capitalist')
+      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
       terminal.instance_variable_set(:@current_account, account)
     end
 

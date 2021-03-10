@@ -41,11 +41,11 @@ module TerminalMenu
       @current_account.print_card_variant
       puts "press `exit` to exit\n"
       answer = gets.chomp
-      break if answer == 'exit'
+      break if answer == Constants::EXIT
 
       puts "Are you sure you want to delete #{@current_account.card_by_index(answer.to_i).number}?[y/n]"
 
-      return unless gets.chomp == 'y'
+      return unless gets.chomp == Constants::YES
 
       @current_account.destroy_card(answer.to_i)
       break
@@ -75,7 +75,7 @@ module TerminalMenu
   def destroy_account
     puts 'Are you sure you want to destroy account?[y/n]'
 
-    return unless gets.chomp == 'y'
+    return unless gets.chomp == Constants::YES
 
     @current_account.self_destruct
     exit

@@ -5,7 +5,7 @@ module Transfers
     puts "press `exit` to exit\n"
 
     answer = gets.chomp
-    return if answer == 'exit'
+    return if answer == Constants::EXIT
 
     current_card = @current_account.card_by_index(answer)
 
@@ -26,7 +26,7 @@ module Transfers
 
     puts "press `exit` to exit\n"
     answer = gets.chomp
-    return if answer == 'exit'
+    return if answer == Constants::EXIT
 
     current_card = @current_account.card_by_index(answer)
 
@@ -48,7 +48,7 @@ module Transfers
 
     puts "press `exit` to exit\n"
     answer = gets.chomp
-    return if answer == 'exit'
+    return if answer == Constants::EXIT
 
     sender_card = @current_account.card_by_index(answer)
 

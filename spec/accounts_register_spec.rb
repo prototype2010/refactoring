@@ -15,7 +15,7 @@ RSpec.describe AccountsRegister do
   end
   let(:account) do
     new_account = Account.new(registration)
-    new_account.create_card('capitalist')
+    new_account.create_card(Constants::CARD_TYPES[:CAPITALIST])
 
     new_account
   end

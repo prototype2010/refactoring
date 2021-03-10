@@ -35,7 +35,7 @@ RSpec.describe Transfers do
                                               login: 'Boris4565'))
 
         allow(account).to receive(:update_account_info)
-        account.create_card('capitalist')
+        account.create_card(Constants::CARD_TYPES[:CAPITALIST])
 
         account
       end
@@ -81,7 +81,7 @@ RSpec.describe Transfers do
                                                 login: 'Boris4565'))
 
           allow(account).to receive(:update_account_info)
-          account.create_card('capitalist')
+          account.create_card(Constants::CARD_TYPES[:CAPITALIST])
 
           account
         end
@@ -113,7 +113,7 @@ RSpec.describe Transfers do
                                               login: 'Boris4565'))
 
         allow(account).to receive(:update_account_info)
-        account.create_card('capitalist')
+        account.create_card(Constants::CARD_TYPES[:CAPITALIST])
 
         account
       end
@@ -161,7 +161,7 @@ RSpec.describe Transfers do
                                               login: 'Boris4565'))
 
         allow(account).to receive(:update_account_info)
-        account.create_card('capitalist')
+        account.create_card(Constants::CARD_TYPES[:CAPITALIST])
 
         account
       end
@@ -193,7 +193,7 @@ RSpec.describe Transfers do
         end
         let(:account) do
           account = Account.new(registration)
-          account.create_card('capitalist')
+          account.create_card(Constants::CARD_TYPES[:CAPITALIST])
           account
         end
 

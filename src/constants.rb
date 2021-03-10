@@ -4,4 +4,8 @@ module Constants
     CAPITALIST: 'capitalist',
     VIRTUAL: 'virtual'
   }.freeze
+
+  EXIT = 'exit'
+  YES = 'y'
+  NO = 'n'
 end

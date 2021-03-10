@@ -14,7 +14,7 @@ RSpec.describe Account do
   end
 
   it 'capitalist card can be created' do
-    account.create_card('capitalist')
+    account.create_card(Constants::CARD_TYPES[:CAPITALIST])
 
     expect(account.cards.first).to be_instance_of(CapitalistCard)
   end
@@ -51,14 +51,14 @@ RSpec.describe Account do
 
   it 'card by index can be received' do
     account.create_card('virtual')
-    account.create_card('capitalist')
+    account.create_card(Constants::CARD_TYPES[:CAPITALIST])
 
     expect(account.card_by_index(2)).to be_instance_of(CapitalistCard)
   end
 
   it 'card by index raises error' do
     account.create_card('virtual')
-    account.create_card('capitalist')
+    account.create_card(Constants::CARD_TYPES[:CAPITALIST])
 
     expect { account.card_by_index(3) }.to raise_error(WrongCardNumber)
   end

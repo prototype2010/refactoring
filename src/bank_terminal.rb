@@ -54,7 +54,7 @@ class BankTerminal
 
   def create_the_first_account
     puts 'There is no active accounts, do you want to be the first?[y/n]'
-    return create if input == 'y'
+    return create if input == Constants::YES
 
     start
   end
