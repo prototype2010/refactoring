@@ -1,4 +1,4 @@
-class NumberExpectedError< StandardError
+class NumberExpectedError < StandardError
   def message
     'number expected error'
   end

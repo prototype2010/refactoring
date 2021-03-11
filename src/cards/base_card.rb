@@ -27,6 +27,7 @@ class BaseCard
   def withdraw(amount)
     valid_amount?(amount)
     raise NotEnoughMoney unless withdraw_possible?(amount)
+
     @balance -= (amount + withdraw_tax(amount))
 
     puts "Money #{amount} withdrawed from #{number}$. Money left: #{balance}$. Tax: #{withdraw_tax(amount)}$"
@@ -47,6 +48,7 @@ class BaseCard
   def put(amount)
     valid_amount?(amount)
     raise TaxIsHigherThanAmountError unless put_possible?(amount)
+
     @balance += (amount - put_tax(amount))
 
     puts "Money #{amount} was put on #{number}. Balance: #{balance}. Tax: #{put_tax(amount)}"

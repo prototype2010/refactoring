@@ -16,7 +16,6 @@ class BankTerminal
     end
   end
 
-
   def create
     new_account = Account.new(registration)
     update_account_info(new_account)
