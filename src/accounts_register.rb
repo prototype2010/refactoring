@@ -15,7 +15,6 @@ module AccountsRegister
 
   def find_account(login, password)
     found_account = accounts.find { |account| account.login == login && account.password == password }
-
     puts 'There is no account with given credentials' unless found_account
 
     found_account
@@ -30,13 +29,18 @@ module AccountsRegister
   def find_card_by_number(card_number)
     raise WrongCardFormat if card_number.length != 16
 
-    found_card = accounts.map(&:cards)
-                         .flatten
-                         .find { |card| card.number == card_number }
+    found_card = cards
+                 .find { |card| card.number == card_number }
 
     raise CardDoesNotExist if found_card.nil?
 
     found_card
+  end
+
+  def cards
+    accounts
+      .map(&:cards)
+      .flatten
   end
 
   def save(accounts)

@@ -14,7 +14,6 @@ RSpec/ExampleLength:
 
 Metrics/MethodLength:
   Max: 20
-  IgnoredMethods: ['card_shortcuts']
 
 RSpec/SubjectStub:
   Enabled: false
