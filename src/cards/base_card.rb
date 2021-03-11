@@ -12,10 +12,8 @@ class BaseCard
     tax = @tax.public_send(tax_type)
 
     case tax
-    when FixedTax
-      tax.value
-    when PercentageTax
-      tax.value * amount
+    when FixedTax then tax.value
+    when PercentageTax then tax.value * amount
     else raise "Unknown tax type #{tax}"
     end
   end
@@ -65,7 +63,7 @@ class BaseCard
     (send_tax(amount) + amount) <= @balance
   end
 
-  def send(amount, card)
+  def send_money(amount, card)
     raise 'Not a number' unless amount.is_a? Numeric
     raise InputCorrectAmount if amount <= 0
     raise NotEnoughMoney unless send_possible?(amount)

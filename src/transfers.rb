@@ -57,7 +57,7 @@ module Transfers
 
     puts 'Input the amount of money you want to send'
 
-    sender_card.send(gets.chomp.to_i, recipient_card)
+    sender_card.send_money(gets.chomp.to_i, recipient_card)
     @account_manager.update
   rescue CardDoesNotExist,
          TaxIsHigherThanAmountError,
