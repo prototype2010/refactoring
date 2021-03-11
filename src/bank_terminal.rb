@@ -7,16 +7,17 @@ class BankTerminal
     @account_manager = nil
   end
 
-  def create
-    registration = nil
-
+  def registration
     loop do
-      registration = Registration.new.start
-      break if registration.errors.empty?
+      registration_result = Registration.new.start
+      return registration_result if registration_result.errors.empty?
 
-      registration.print_errors
+      registration_result.print_errors
     end
+  end
 
+
+  def create
     new_account = Account.new(registration)
     update_account_info(new_account)
 
