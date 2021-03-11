@@ -13,7 +13,7 @@ class AccountManagement
     update_account_info(@account)
   end
 
-  def has_cards?
+  def cards?
     @account.cards.length.positive?
   end
 

@@ -35,7 +35,7 @@ module TerminalMenu
 
   def destroy_card
     loop do
-      raise NoActiveCardsError unless @account_manager.has_cards?
+      raise NoActiveCardsError unless @account_manager.cards?
 
       puts 'If you want to delete:'
       @account_manager.print_card_variant

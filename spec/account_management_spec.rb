@@ -1,14 +1,15 @@
 RSpec.describe AccountManagement do
-  let(:registration) {
+  subject(:account_manager) { described_class.new(account) }
+
+  let(:registration) do
     instance_double('Registration',
                     name: 'Boris',
                     age: 45,
                     password: 'asdasd',
                     login: 'Boris4565')
-  }
+  end
 
   let(:account) { Account.new(registration) }
-  subject(:account_manager) { described_class.new(account) }
 
   before do
     allow(account_manager).to receive(:update_account_info)

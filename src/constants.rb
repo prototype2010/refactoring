@@ -5,7 +5,7 @@ module Constants
     VIRTUAL: 'virtual'
   }.freeze
 
-  EXIT = 'exit'
-  YES = 'y'
-  NO = 'n'
+  EXIT = 'exit'.freeze
+  YES = 'y'.freeze
+  NO = 'n'.freeze
 end

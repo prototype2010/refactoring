@@ -72,7 +72,7 @@ RSpec.describe Transfers do
 
     context 'when failure' do
       context 'when not enough money' do
-        let(:account) {Account.new(registration)}
+        let(:account) { Account.new(registration) }
         let(:card_number) { '1' }
         let(:withdraw_amount) { '190' }
         let(:commands) { [card_number, withdraw_amount] }
@@ -95,7 +95,7 @@ RSpec.describe Transfers do
 
   context 'when put_money' do
     context 'when successful' do
-      let(:account) {Account.new(registration)}
+      let(:account) { Account.new(registration) }
 
       let(:card) { account.cards.first }
       let(:card_number) { '1' }
@@ -135,7 +135,7 @@ RSpec.describe Transfers do
     end
 
     context 'when failure' do
-      let(:account) {Account.new(registration)}
+      let(:account) { Account.new(registration) }
 
       let(:card) { account.cards.first }
       let(:card_number) { '1' }
@@ -158,7 +158,6 @@ RSpec.describe Transfers do
 
     context 'when send money' do
       context 'when successful' do
-
         let(:account_manager) do
           manager = AccountManagement.new(Account.new(registration))
           manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
