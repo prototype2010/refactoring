@@ -1,4 +1,6 @@
 class BaseCard
+  include Validator
+
   attr_reader :number, :type, :balance, :tax
 
   def initialize(tax)
@@ -23,10 +25,8 @@ class BaseCard
   end
 
   def withdraw(amount)
-    raise 'Not a number' unless amount.is_a? Numeric
-    raise InputCorrectAmount if amount.negative?
+    valid_amount?(amount)
     raise NotEnoughMoney unless withdraw_possible?(amount)
-
     @balance -= (amount + withdraw_tax(amount))
 
     puts "Money #{amount} withdrawed from #{number}$. Money left: #{balance}$. Tax: #{withdraw_tax(amount)}$"
@@ -45,11 +45,8 @@ class BaseCard
   end
 
   def put(amount)
-    raise InputCorrectAmount if amount <= 0
-    raise 'Not a number' unless amount.is_a? Numeric
-
+    valid_amount?(amount)
     raise TaxIsHigherThanAmountError unless put_possible?(amount)
-
     @balance += (amount - put_tax(amount))
 
     puts "Money #{amount} was put on #{number}. Balance: #{balance}. Tax: #{put_tax(amount)}"
@@ -64,12 +61,10 @@ class BaseCard
   end
 
   def send_money(amount, card)
-    raise NumberExpectedError unless amount.is_a? Numeric
-    raise InputCorrectAmount if amount <= 0
+    valid_amount?(amount)
     raise NotEnoughMoney unless send_possible?(amount)
     raise NotEnoughMoney unless card.put_possible?(amount)
-
-    raise 'Not instance of card' unless card.class.ancestors.include?(BaseCard)
+    raise CardInstanceExpectedError unless card.class.ancestors.include?(BaseCard)
 
     @balance = @balance - amount - send_tax(amount)
 
