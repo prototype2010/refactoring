@@ -13,17 +13,13 @@ RSpec.describe AccountsRegister do
                     login: 'thelogin',
                     errors: [])
   end
-  let(:account) do
-    new_account = Account.new(registration)
-    new_account.create_card(Constants::CARD_TYPES[:CAPITALIST])
-
-    new_account
-  end
-
-  let(:card) { account.cards.first }
+  let(:account) { Account.new(registration) }
+  let(:account_management) { AccountManagement.new(account) }
+  let(:card) { account_management.cards.first }
   let(:card_number) { card.number }
 
   before do
+    account_management.create_card(Constants::CARD_TYPES[:CAPITALIST])
     allow(file_util).to receive(:accounts).and_return([account])
   end
 

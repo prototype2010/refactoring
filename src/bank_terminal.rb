@@ -4,7 +4,7 @@ class BankTerminal
   include TerminalMenu
 
   def initialize
-    @current_account = nil
+    @account_manager = nil
   end
 
   def create
@@ -26,7 +26,7 @@ class BankTerminal
   end
 
   def sign_in(login, password)
-    @current_account = find_account(login, password)
+    @account_manager = AccountManagement.new(find_account(login, password))
   end
 
   def start

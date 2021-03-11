@@ -10,6 +10,7 @@ RSpec.describe BankTerminal do
                     errors: [])
   end
   let(:account) { Account.new(registration) }
+  let(:account_manager) { AccountManagement.new(account) }
 
   before do
     allow(terminal).to receive(:exit)
@@ -77,8 +78,8 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
-      terminal.instance_variable_set(:@current_account, account)
+      account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+      terminal.instance_variable_set(:@account_manager, account_manager)
     end
 
     it 'prints cards list' do
@@ -92,8 +93,8 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
-      terminal.instance_variable_set(:@current_account, account)
+      account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+      terminal.instance_variable_set(:@account_manager, account_manager)
     end
 
     it 'prints cards list' do
@@ -107,8 +108,8 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
-      terminal.instance_variable_set(:@current_account, account)
+      account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+      terminal.instance_variable_set(:@account_manager, account_manager)
     end
 
     it 'prints cards list' do
@@ -122,8 +123,8 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
-      terminal.instance_variable_set(:@current_account, account)
+      account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+      terminal.instance_variable_set(:@account_manager, account_manager)
     end
 
     it 'prints cards list' do
@@ -137,8 +138,8 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
-      terminal.instance_variable_set(:@current_account, account)
+      account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+      terminal.instance_variable_set(:@account_manager, account_manager)
     end
 
     it 'prints cards list' do
@@ -152,8 +153,8 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
-      terminal.instance_variable_set(:@current_account, account)
+      account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+      terminal.instance_variable_set(:@account_manager, account_manager)
     end
 
     it 'prints cards list' do
@@ -167,8 +168,8 @@ RSpec.describe BankTerminal do
 
     before do
       allow(terminal).to receive_message_chain(:gets, :chomp).and_return(*commands)
-      account.create_card(Constants::CARD_TYPES[:CAPITALIST])
-      terminal.instance_variable_set(:@current_account, account)
+      account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+      terminal.instance_variable_set(:@account_manager, account_manager)
     end
 
     it 'prints cards list' do
