@@ -64,7 +64,7 @@ class BaseCard
   end
 
   def send_money(amount, card)
-    raise 'Not a number' unless amount.is_a? Numeric
+    raise NumberExpectedError unless amount.is_a? Numeric
     raise InputCorrectAmount if amount <= 0
     raise NotEnoughMoney unless send_possible?(amount)
     raise NotEnoughMoney unless card.put_possible?(amount)
