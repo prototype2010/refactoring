@@ -73,7 +73,7 @@ class BaseCard
     puts "Money #{amount} was put on #{card.number}. Balance: #{balance}. Tax: #{send_tax(amount)}$\n"
   end
 
-  def to_yaml
+  def to_hash
     {
       tax: @tax,
       type: @type,
