@@ -1,18 +1,18 @@
 module Constants
   CARD_TYPES = {
     USUAL: {
-      name:  'usual',
+      name: 'usual',
       start_balance: 50
     },
     CAPITALIST: {
-      name:  'capitalist',
+      name: 'capitalist',
       start_balance: 100
     },
-    VIRTUAL:  {
-      name:  'virtual',
+    VIRTUAL: {
+      name: 'virtual',
       start_balance: 150
 
-    },
+    }
   }.freeze
 
   EXIT = 'exit'.freeze
