@@ -44,11 +44,15 @@ module Transfers
     puts e.message
   end
 
-  def send_money
+  def sender_card
     puts SEND_CARD_REQUEST
     @account_manager.print_card_variant
     puts Constants::EXIT_PROMPT
-    answer = gets.chomp
+    gets.chomp
+  end
+
+  def send_money
+    answer = sender_card
     return if answer == Constants::EXIT
 
     sender_card = @account_manager.card_by_index(answer)

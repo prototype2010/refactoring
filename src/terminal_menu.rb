@@ -43,19 +43,23 @@ module TerminalMenu
     }
   end
 
+  def card_to_destroy
+    @account_manager.print_card_variant
+    puts Constants::EXIT_PROMPT
+    gets.chomp
+  end
+
   def destroy_card
     raise NoActiveCardsError unless @account_manager.cards?
 
     loop do
-      @account_manager.print_card_variant
-      puts Constants::EXIT_PROMPT
-      answer = gets.chomp
-      break if answer == Constants::EXIT
+      card = card_to_destroy
+      break if card == Constants::EXIT
 
-      puts "Are you sure you want to delete #{@account_manager.card_by_index(answer.to_i).number}?[y/n]"
+      puts "Are you sure you want to delete #{@account_manager.card_by_index(card.to_i).number}?[y/n]"
       return unless gets.chomp == Constants::YES
 
-      @account_manager.destroy_card(answer.to_i)
+      @account_manager.destroy_card(card.to_i)
       break
     rescue WrongCardNumber, NoActiveCardsError => e
       puts e.message
