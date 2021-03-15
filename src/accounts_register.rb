@@ -28,7 +28,7 @@ module AccountsRegister
   end
 
   def find_card_by_number(card_number)
-    raise WrongCardFormat if card_number.length != 16
+    raise WrongCardFormat if card_number.length != Constants::CARD_LENGTH
 
     found_card = cards
                  .find { |card| card.number == card_number }

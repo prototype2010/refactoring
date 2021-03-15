@@ -1,4 +1,5 @@
 module Constants
+  CARD_LENGTH = 16
   CARD_TYPES = {
     USUAL: {
       name: 'usual',

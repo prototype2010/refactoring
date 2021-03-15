@@ -7,7 +7,7 @@ class BaseCard
     @tax = tax
     @type = nil
     @balance = 0.00
-    @number = 16.times.map { rand(10) }.join
+    @number = Constants::CARD_LENGTH.times.map { rand(10) }.join
   end
 
   def resolve_tax_by_type(tax_type, amount)
