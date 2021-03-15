@@ -44,9 +44,9 @@ module TerminalMenu
   end
 
   def destroy_card
-    loop do
-      raise NoActiveCardsError unless @account_manager.cards?
+    raise NoActiveCardsError unless @account_manager.cards?
 
+    loop do
       @account_manager.print_card_variant
       puts Constants::EXIT_PROMPT
       answer = gets.chomp

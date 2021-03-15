@@ -56,6 +56,7 @@ module Transfers
     recipient_card = find_card_by_number(gets.chomp)
     puts SEND_AMOUNT_REQUEST
     sender_card.send_money(gets.chomp.to_i, recipient_card)
+
     @account_manager.update
   rescue CardDoesNotExist,
          TaxIsHigherThanAmountError,
