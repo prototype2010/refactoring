@@ -36,9 +36,6 @@ Metrics/LineLength:
 RSpec/MultipleMemoizedHelpers:
   Max: 10
 
-Style/GuardClause:
-  IgnoredMethods: ['name_input']
-
 Documentation:
   Enabled: false
 
