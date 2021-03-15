@@ -25,7 +25,7 @@ class BaseCard
   end
 
   def withdraw(amount)
-    valid_amount?(amount)
+    validate_amount(amount)
     raise NotEnoughMoney unless withdraw_possible?(amount)
 
     @balance -= (amount + withdraw_tax(amount))
@@ -46,7 +46,7 @@ class BaseCard
   end
 
   def put(amount)
-    valid_amount?(amount)
+    validate_amount(amount)
     raise TaxIsHigherThanAmountError unless put_possible?(amount)
 
     @balance += (amount - put_tax(amount))
@@ -63,15 +63,12 @@ class BaseCard
   end
 
   def send_money(amount, card)
-    valid_amount?(amount)
-    raise NotEnoughMoney unless send_possible?(amount)
-    raise NotEnoughMoney unless card.put_possible?(amount)
-    raise CardInstanceExpectedError unless card.class.ancestors.include?(BaseCard)
+    validate_amount(amount)
+    validate_send(card, amount)
 
     @balance = @balance - amount - send_tax(amount)
 
     card.put(amount)
-
     puts "Money #{amount} was put on #{card.number}. Balance: #{balance}. Tax: #{send_tax(amount)}$\n"
   end
 

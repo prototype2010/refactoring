@@ -66,9 +66,7 @@ module TerminalMenu
     loop do
       puts CARD_CREATE_MESSAGE
       @account_manager.create_card(gets.chomp)
-
       break
-
     rescue WrongCardTypeError => e
       puts e.message
       retry
