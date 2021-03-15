@@ -16,13 +16,13 @@ RSpec.describe AccountManagement do
   end
 
   it 'capitalist card can be created' do
-    account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+    account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
 
     expect(account_manager.cards.first).to be_instance_of(CapitalistCard)
   end
 
   it 'usual card can be created' do
-    account_manager.create_card(Constants::CARD_TYPES[:USUAL])
+    account_manager.create_card(Constants::CARD_TYPES[:USUAL][:name])
 
     expect(account_manager.cards.first).to be_instance_of(UsualCard)
   end
@@ -32,35 +32,35 @@ RSpec.describe AccountManagement do
   end
 
   it 'virtual card can be created' do
-    account_manager.create_card(Constants::CARD_TYPES[:VIRTUAL])
+    account_manager.create_card(Constants::CARD_TYPES[:VIRTUAL][:name])
 
     expect(account_manager.cards.first).to be_instance_of(VirtualCard)
   end
 
   it 'virtual card can be deleted' do
-    account_manager.create_card(Constants::CARD_TYPES[:VIRTUAL])
+    account_manager.create_card(Constants::CARD_TYPES[:VIRTUAL][:name])
     account_manager.destroy_card(1)
 
     expect(account_manager.cards).to eq([])
   end
 
   it 'virtual card is printed' do
-    account_manager.create_card(Constants::CARD_TYPES[:VIRTUAL])
+    account_manager.create_card(Constants::CARD_TYPES[:VIRTUAL][:name])
     card = account_manager.cards.first
 
     expect { account_manager.print_card_variant }.to output(/#{card.number}/).to_stdout
   end
 
   it 'card by index can be received' do
-    account_manager.create_card(Constants::CARD_TYPES[:VIRTUAL])
-    account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+    account_manager.create_card(Constants::CARD_TYPES[:VIRTUAL][:name])
+    account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
 
     expect(account_manager.card_by_index(2)).to be_instance_of(CapitalistCard)
   end
 
   it 'card by index raises error' do
-    account_manager.create_card(Constants::CARD_TYPES[:VIRTUAL])
-    account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+    account_manager.create_card(Constants::CARD_TYPES[:VIRTUAL][:name])
+    account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
 
     expect { account_manager.card_by_index(3) }.to raise_error(WrongCardNumber)
   end

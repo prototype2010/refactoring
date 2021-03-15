@@ -19,7 +19,7 @@ RSpec.describe AccountsRegister do
   let(:card_number) { card.number }
 
   before do
-    account_management.create_card(Constants::CARD_TYPES[:CAPITALIST])
+    account_management.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
     allow(file_util).to receive(:accounts).and_return([account])
   end
 

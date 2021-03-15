@@ -42,7 +42,7 @@ RSpec.describe Transfers do
       let(:account_manager) { AccountManagement.new(account) }
 
       before do
-        account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+        account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
         allow(account_manager).to receive(:update_account_info)
         allow(transfer_helper).to receive_message_chain(:gets, :chomp).and_return(*commands)
         transfer_helper.account_manager = account_manager
@@ -79,7 +79,7 @@ RSpec.describe Transfers do
         let(:account_manager) { AccountManagement.new(account) }
 
         before do
-          account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+          account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
           allow(account_manager).to receive(:update_account_info)
           allow(transfer_helper).to receive_message_chain(:gets, :chomp).and_return(*commands)
           transfer_helper.account_manager = account_manager
@@ -104,7 +104,7 @@ RSpec.describe Transfers do
       let(:account_manager) { AccountManagement.new(account) }
 
       before do
-        account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+        account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
         allow(account_manager).to receive(:update_account_info)
         allow(transfer_helper).to receive_message_chain(:gets, :chomp).and_return(*commands)
         transfer_helper.account_manager = account_manager
@@ -144,7 +144,7 @@ RSpec.describe Transfers do
       let(:account_manager) { AccountManagement.new(account) }
 
       before do
-        account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+        account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
         allow(account_manager).to receive(:update_account_info)
         allow(transfer_helper).to receive_message_chain(:gets, :chomp).and_return(*commands)
         transfer_helper.account_manager = account_manager
@@ -160,7 +160,7 @@ RSpec.describe Transfers do
       context 'when successful' do
         let(:account_manager) do
           manager = AccountManagement.new(Account.new(registration))
-          manager.create_card(Constants::CARD_TYPES[:CAPITALIST])
+          manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
           manager
         end
 
