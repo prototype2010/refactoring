@@ -1,5 +1,6 @@
 module AccountsRegister
   FILE_PATH = 'accounts.yml'.freeze
+  ACCOUNT_NOT_FOUND_MESSAGE = 'There is no account with given credentials'.freeze
 
   def accounts
     if File.exist?(FILE_PATH)
@@ -15,7 +16,7 @@ module AccountsRegister
 
   def find_account(login, password)
     found_account = accounts.find { |account| account.login == login && account.password == password }
-    puts 'There is no account with given credentials' unless found_account
+    puts ACCOUNT_NOT_FOUND_MESSAGE unless found_account
 
     found_account
   end

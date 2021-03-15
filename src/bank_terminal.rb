@@ -3,6 +3,14 @@ class BankTerminal
   include Transfers
   include TerminalMenu
 
+  LOGIN_REQUEST = 'Enter your login'.freeze
+  PASSWORD_REQUEST = 'Enter your password'.freeze
+  NO_ACTIVE_ACCOUNT_MESSAGE =  'There is no active accounts, do you want to be the first?[y/n]'.freeze
+  WELCOME_MESSAGE = 'Hello, we are RubyG bank! \
+    - If you want to create account - press `create` \
+    - If you want to load account - press `load` \
+    - If you want to exit - press `exit`'.freeze
+
   def initialize
     @account_manager = nil
   end
@@ -30,10 +38,7 @@ class BankTerminal
   end
 
   def start
-    puts 'Hello, we are RubyG bank!'
-    puts '- If you want to create account - press `create`'
-    puts '- If you want to load account - press `load`'
-    puts '- If you want to exit - press `exit`'
+    puts WELCOME_MESSAGE
     shortcut = input.to_sym
 
     return initial_menu.dig(shortcut, :command).call if initial_menu.key?(shortcut)
@@ -44,16 +49,16 @@ class BankTerminal
   def load
     return create_the_first_account if accounts.empty?
 
-    puts 'Enter your login'
+    puts LOGIN_REQUEST
     login = input
-    puts 'Enter your password'
+    puts PASSWORD_REQUEST
     password = input
     sign_in(login, password)
     main_menu
   end
 
   def create_the_first_account
-    puts 'There is no active accounts, do you want to be the first?[y/n]'
+    puts NO_ACTIVE_ACCOUNT_MESSAGE
     return create if input == Constants::YES
 
     start

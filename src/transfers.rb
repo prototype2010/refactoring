@@ -1,15 +1,21 @@
 module Transfers
+  WITHDRAW_REQUEST = 'Choose the card for withdrawing:'.freeze
+  CHOOSE_CARD_REQUEST = 'Choose the card for putting:'.freeze
+  WITHDRAW_AMOUNT_REQUEST = 'Input the amount of money you want to withdraw'.freeze
+  PUT_AMOUNT_REQUEST = 'Input the amount of money you want to put on your card'.freeze
+  SEND_CARD_REQUEST = 'Choose the card for sending:'.freeze
+  SEND_AMOUNT_REQUEST = 'Input the amount of money you want to send'.freeze
+  RECIPIENT_CARD_REQUEST = 'Enter the recipient card:'.freeze
+
   def withdraw_money
     @account_manager.print_card_variant
-    puts 'Choose the card for withdrawing:'
-    puts "press `exit` to exit\n"
-
+    puts WITHDRAW_REQUEST
+    puts Constants::EXIT_PROMPT
     answer = gets.chomp
     return if answer == Constants::EXIT
 
     current_card = @account_manager.card_by_index(answer)
-
-    puts 'Input the amount of money you want to withdraw'
+    puts WITHDRAW_AMOUNT_REQUEST
     current_card.withdraw(gets.chomp.to_i)
     @account_manager.update
   rescue NotEnoughMoney,
@@ -21,16 +27,13 @@ module Transfers
 
   def put_money
     @account_manager.print_card_variant
-
-    puts 'Choose the card for putting:'
-
-    puts "press `exit` to exit\n"
+    puts CHOOSE_CARD_REQUEST
+    puts Constants::EXIT_PROMPT
     answer = gets.chomp
     return if answer == Constants::EXIT
 
     current_card = @account_manager.card_by_index(answer)
-
-    puts 'Input the amount of money you want to put on your card'
+    puts PUT_AMOUNT_REQUEST
 
     current_card.put(gets.chomp.to_i)
     @account_manager.update
@@ -42,21 +45,16 @@ module Transfers
   end
 
   def send_money
-    puts 'Choose the card for sending:'
-
+    puts SEND_CARD_REQUEST
     @account_manager.print_card_variant
-
-    puts "press `exit` to exit\n"
+    puts Constants::EXIT_PROMPT
     answer = gets.chomp
     return if answer == Constants::EXIT
 
     sender_card = @account_manager.card_by_index(answer)
-
-    puts 'Enter the recipient card:'
+    puts RECIPIENT_CARD_REQUEST
     recipient_card = find_card_by_number(gets.chomp)
-
-    puts 'Input the amount of money you want to send'
-
+    puts SEND_AMOUNT_REQUEST
     sender_card.send_money(gets.chomp.to_i, recipient_card)
     @account_manager.update
   rescue CardDoesNotExist,
