@@ -93,7 +93,7 @@ and lower then #{RULES[:age][:max]}"
 
     @age = gets.chomp.to_i
     if @age <= rules[:min] || @age >= rules[:max]
-      @errors.push('Your Age must be greeter then 23 and lower then 90')
+      @errors.push(ACCOUNT_VALIDATION_PHRASES[:age][:length])
     end
   end
 
