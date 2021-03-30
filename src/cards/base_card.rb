@@ -5,10 +5,26 @@ class BaseCard
 
   CARD_LENGTH = 16
 
-  def initialize(tax)
+  CARD_TYPES = {
+    USUAL: {
+      name: 'usual',
+      start_balance: 50,
+    },
+    CAPITALIST: {
+      name: 'capitalist',
+      start_balance: 100,
+
+    },
+    VIRTUAL: {
+      name: 'virtual',
+      start_balance: 150,
+    }
+  }.freeze
+
+  def initialize(tax, balance, type)
     @tax = tax
-    @type = nil
-    @balance = 0.00
+    @balance = balance
+    @type = type
     @number = CARD_LENGTH.times.map { rand(10) }.join
   end
 

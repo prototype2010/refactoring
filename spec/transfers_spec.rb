@@ -13,12 +13,12 @@ RSpec.describe Transfers do
     context 'when successful' do
       let(:account) { Account.new(registration) }
       let(:card_number) { '1' }
-      let(:withdraw_amount) { '90' }
+      let(:withdraw_amount) { 90 }
       let(:commands) { [card_number, withdraw_amount] }
       let(:account_manager) { AccountManagement.new(account) }
 
       before do
-        account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
+        account_manager.create_card('capitalist')
         allow(account_manager).to receive(:update_account_info)
         allow(transfer_helper).to receive_message_chain(:gets, :chomp).and_return(*commands)
         transfer_helper.account_manager = account_manager
@@ -50,12 +50,12 @@ RSpec.describe Transfers do
       context 'when not enough money' do
         let(:account) { Account.new(registration) }
         let(:card_number) { '1' }
-        let(:withdraw_amount) { '190' }
+        let(:withdraw_amount) { 190 }
         let(:commands) { [card_number, withdraw_amount] }
         let(:account_manager) { AccountManagement.new(account) }
 
         before do
-          account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
+          account_manager.create_card('capitalist')
           allow(account_manager).to receive(:update_account_info)
           allow(transfer_helper).to receive_message_chain(:gets, :chomp).and_return(*commands)
           transfer_helper.account_manager = account_manager
@@ -75,12 +75,12 @@ RSpec.describe Transfers do
 
       let(:card) { account.cards.first }
       let(:card_number) { '1' }
-      let(:put_amount) { '100' }
+      let(:put_amount) { 100 }
       let(:commands) { [card_number, put_amount] }
       let(:account_manager) { AccountManagement.new(account) }
 
       before do
-        account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
+        account_manager.create_card('capitalist')
         allow(account_manager).to receive(:update_account_info)
         allow(transfer_helper).to receive_message_chain(:gets, :chomp).and_return(*commands)
         transfer_helper.account_manager = account_manager
@@ -120,7 +120,7 @@ RSpec.describe Transfers do
       let(:account_manager) { AccountManagement.new(account) }
 
       before do
-        account_manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
+        account_manager.create_card('capitalist')
         allow(account_manager).to receive(:update_account_info)
         allow(transfer_helper).to receive_message_chain(:gets, :chomp).and_return(*commands)
         transfer_helper.account_manager = account_manager
@@ -136,7 +136,7 @@ RSpec.describe Transfers do
       context 'when successful' do
         let(:account_manager) do
           manager = AccountManagement.new(Account.new(registration))
-          manager.create_card(Constants::CARD_TYPES[:CAPITALIST][:name])
+          manager.create_card('capitalist')
           manager
         end
 
@@ -144,7 +144,7 @@ RSpec.describe Transfers do
         let(:card_number) { '1' }
         let(:recipient_card_number) { '1234123412341234' }
         let(:recipient_card) do
-          card = CapitalistCard.new(CapitalistCardTax.new)
+          card = CardsFactory.create_card('capitalist')
           card.instance_variable_set(:@number, recipient_card_number)
           card
         end
