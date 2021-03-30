@@ -5,22 +5,6 @@ class BaseCard
 
   CARD_LENGTH = 16
 
-  CARD_TYPES = {
-    USUAL: {
-      name: 'usual',
-      start_balance: 50
-    },
-    CAPITALIST: {
-      name: 'capitalist',
-      start_balance: 100
-
-    },
-    VIRTUAL: {
-      name: 'virtual',
-      start_balance: 150
-    }
-  }.freeze
-
   def initialize(tax, balance)
     @tax = tax
     @balance = balance
