@@ -15,21 +15,40 @@ module Constants
   }
 
   CARD_LENGTH = 16
+
   CARD_TYPES = {
     USUAL: {
       name: 'usual',
-      start_balance: 50
+      start_balance: 50,
     },
     CAPITALIST: {
       name: 'capitalist',
-      start_balance: 100
+      start_balance: 100,
+
     },
     VIRTUAL: {
       name: 'virtual',
-      start_balance: 150
-
+      start_balance: 150,
     }
   }.freeze
+
+  TAXES = {
+    capitalist: {
+      withdraw: 0.04,
+      put: 10,
+      sender: 0.1,
+    },
+    virtual: {
+      withdraw: 0.88,
+      put: 1,
+      sender: 1,
+    },
+    usual: {
+      withdraw: 0.05,
+      put: 0.02,
+      sender: 20,
+    }
+  }
 
   EXIT = 'exit'.freeze
   YES = 'y'.freeze
