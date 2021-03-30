@@ -36,7 +36,4 @@ module Constants
   NO = 'n'.freeze
 
   EXIT_PROMPT = "press `exit` to exit\n".freeze
-
-
-
 end

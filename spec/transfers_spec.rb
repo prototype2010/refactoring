@@ -9,19 +9,6 @@ class TransfersHelper
   end
 end
 
-TRANSFER_PHRASES = {
-  choose_card_withdrawing: 'Choose the card for withdrawing:',
-  choose_card_putting: 'Choose the card for putting:',
-  choose_card_sending: 'Choose the card for sending:',
-  recipient_card: 'Enter the recipient card:',
-  withdraw_amount: 'Input the amount of money you want to withdraw',
-  send_amount: 'Input the amount of money you want to send',
-  put_amount: 'Input the amount of money you want to put on your card',
-  not_enough_money: 'You don\'t have enough money on card for such operation',
-  incorrect_sum: 'You must input correct amount of money'
-
-}.freeze
-
 RSpec.describe Transfers do
   subject(:transfer_helper) { TransfersHelper.new }
 
@@ -50,12 +37,12 @@ RSpec.describe Transfers do
 
       it 'choose card requested' do
         expect { transfer_helper.withdraw_money }
-          .to output(/#{TRANSFER_PHRASES[:choose_card_withdrawing]}/).to_stdout
+          .to output(/#{Transfers::WITHDRAW_REQUEST}/).to_stdout
       end
 
       it 'withdraw amount requested' do
         expect { transfer_helper.withdraw_money }
-          .to output(/#{TRANSFER_PHRASES[:withdraw_amount]}/).to_stdout
+          .to output(/#{Transfers::WITHDRAW_AMOUNT_REQUEST}/).to_stdout
       end
 
       it 'withdraw prints success message' do
@@ -87,7 +74,7 @@ RSpec.describe Transfers do
 
         it 'withdraw prints error message' do
           expect { transfer_helper.withdraw_money }
-            .to output(/#{TRANSFER_PHRASES[:not_enough_money]}/).to_stdout
+            .to output(/#{Transfers::NOT_ENOUGH_MONEY}/).to_stdout
         end
       end
     end
@@ -112,12 +99,12 @@ RSpec.describe Transfers do
 
       it 'choose card requested' do
         expect { transfer_helper.put_money }
-          .to output(/#{TRANSFER_PHRASES[:choose_card_putting]}/).to_stdout
+          .to output(/#{Transfers::CHOOSE_CARD_REQUEST}/).to_stdout
       end
 
       it 'withdraw amount requested' do
         expect { transfer_helper.put_money }
-          .to output(/#{TRANSFER_PHRASES[:put_amount]}/).to_stdout
+          .to output(/#{Transfers::PUT_AMOUNT_REQUEST}/).to_stdout
       end
 
       it 'put prints success message' do
@@ -152,7 +139,7 @@ RSpec.describe Transfers do
 
       it 'print error message' do
         expect { transfer_helper.put_money }
-          .to output(/#{TRANSFER_PHRASES[:incorrect_sum]}/).to_stdout
+          .to output(/#{Transfers::INCORRECT_SUM}/).to_stdout
       end
     end
 
@@ -187,17 +174,17 @@ RSpec.describe Transfers do
 
         it 'requests send card' do
           expect { transfer_helper.send_money }
-            .to output(/#{TRANSFER_PHRASES[:choose_card_sending]}/).to_stdout
+            .to output(/#{Transfers::SEND_CARD_REQUEST}/).to_stdout
         end
 
         it 'requests card number' do
           expect { transfer_helper.send_money }
-            .to output(/#{TRANSFER_PHRASES[:recipient_card]}/).to_stdout
+            .to output(/#{Transfers::RECIPIENT_CARD_REQUEST}/).to_stdout
         end
 
         it 'requests send amount' do
           expect { transfer_helper.send_money }
-            .to output(/#{TRANSFER_PHRASES[:send_amount]}/).to_stdout
+            .to output(/#{Transfers::SEND_AMOUNT_REQUEST}/).to_stdout
         end
 
         it 'put prints success message' do
