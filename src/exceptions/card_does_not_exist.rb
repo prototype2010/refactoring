@@ -1,5 +1,5 @@
 class CardDoesNotExist < StandardError
-  def initialize(msg = nil)
-    super(msg)
+  def message
+    'Card does not exist'
   end
 end

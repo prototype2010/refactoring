@@ -3,9 +3,5 @@ class TransfersHelper
   include AccountsRegister
 
   attr_accessor :account_manager
-
-  def initialize
-    @account_manager = nil
-  end
 end
 
