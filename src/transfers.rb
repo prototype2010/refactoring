@@ -6,8 +6,8 @@ module Transfers
   SEND_CARD_REQUEST = 'Choose the card for sending:'.freeze
   SEND_AMOUNT_REQUEST = 'Input the amount of money you want to send'.freeze
   RECIPIENT_CARD_REQUEST = 'Enter the recipient card:'.freeze
-  NOT_ENOUGH_MONEY = 'You don\'t have enough money on card for such operation'
-  INCORRECT_SUM = 'You must input correct amount of money'
+  NOT_ENOUGH_MONEY = 'You don\'t have enough money on card for such operation'.freeze
+  INCORRECT_SUM = 'You must input correct amount of money'.freeze
 
   def withdraw_money
     @account_manager.print_card_variant

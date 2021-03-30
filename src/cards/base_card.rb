@@ -8,16 +8,16 @@ class BaseCard
   CARD_TYPES = {
     USUAL: {
       name: 'usual',
-      start_balance: 50,
+      start_balance: 50
     },
     CAPITALIST: {
       name: 'capitalist',
-      start_balance: 100,
+      start_balance: 100
 
     },
     VIRTUAL: {
       name: 'virtual',
-      start_balance: 150,
+      start_balance: 150
     }
   }.freeze
 

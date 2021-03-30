@@ -1,4 +1,3 @@
-
 RSpec.describe Registration do
   subject(:registration) { described_class.new }
 

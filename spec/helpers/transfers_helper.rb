@@ -4,4 +4,3 @@ class TransfersHelper
 
   attr_accessor :account_manager
 end
-
