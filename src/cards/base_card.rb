@@ -3,11 +3,13 @@ class BaseCard
 
   attr_reader :number, :type, :balance, :tax
 
+  CARD_LENGTH = 16
+
   def initialize(tax)
     @tax = tax
     @type = nil
     @balance = 0.00
-    @number = Constants::CARD_LENGTH.times.map { rand(10) }.join
+    @number = CARD_LENGTH.times.map { rand(10) }.join
   end
 
   def resolve_tax_by_type(tax_type, amount)
