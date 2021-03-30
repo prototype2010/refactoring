@@ -56,8 +56,8 @@ class Registration
     puts LOGIN_REQUEST
     @login = gets.chomp
     @errors.push(ACCOUNT_VALIDATION_PHRASES[:login][:present]) if @login == ""
-    @errors.push("Login must be longer then 4 symbols") if @login.length < 4
-    @errors.push("Login must be shorter then 20 symbols") if @login.length > 20
+    @errors.push("Login must be longer then 4 symbols") if @login.length < Constants::ACCOUNT[:login][:min]
+    @errors.push("Login must be shorter then 20 symbols") if @login.length > Constants::ACCOUNT[:login][:max]
     @errors.push(ACCOUNT_VALIDATION_PHRASES[:login][:exists]) if login_exists?(@login)
   end
 
@@ -65,14 +65,14 @@ class Registration
     puts PASSWORD_REQUEST
     @password = gets.chomp
     @errors.push("Password must present") if @password == ""
-    @errors.push("Password must be longer then 6 symbols") if @password.length < 6
-    @errors.push("Password must be shorter then 30 symbols") if @password.length > 30
+    @errors.push("Password must be longer then 6 symbols") if @password.length < Constants::ACCOUNT[:password][:min]
+    @errors.push("Password must be shorter then 30 symbols") if @password.length > Constants::ACCOUNT[:password][:max]
   end
 
   def age_input
     puts AGE_REQUEST
     @age = gets.chomp.to_i
-    @errors.push("Your Age must be greeter then 23 and lower then 90") if @age <= 23 || @age >= 90
+    @errors.push("Your Age must be greeter then 23 and lower then 90") if @age <= Constants::ACCOUNT[:age][:min] || @age >= Constants::ACCOUNT[:age][:max]
   end
 
   def print_errors
