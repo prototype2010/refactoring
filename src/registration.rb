@@ -71,30 +71,42 @@ and lower then #{RULES[:age][:max]}"
   def login_input
     puts LOGIN_REQUEST
     @login = gets.chomp
-    @errors.push(ACCOUNT_VALIDATION_PHRASES[:login][:present]) if @login.empty?
-    @errors.push(ACCOUNT_VALIDATION_PHRASES[:login][:longer]) if @login.length < RULES[:login][:min]
-    @errors.push(ACCOUNT_VALIDATION_PHRASES[:login][:shorter]) if @login.length > RULES[:login][:max]
-    @errors.push(ACCOUNT_VALIDATION_PHRASES[:login][:exists]) if login_exists?(@login)
+    check_login_available
+    check_login_length
+  end
+
+  def check_login_available
+    validations = ACCOUNT_VALIDATION_PHRASES[:login]
+
+    @errors.push(validations[:present]) if @login.empty?
+    @errors.push(validations[:exists]) if login_exists?(@login)
+  end
+
+  def check_login_length
+    rules = RULES[:login]
+    validations = ACCOUNT_VALIDATION_PHRASES[:login]
+
+    @errors.push(validations[:longer]) if @login.length < rules[:min]
+    @errors.push(validations[:shorter]) if @login.length > rules[:max]
   end
 
   def password_input
+    rules = RULES[:password]
+    validations = ACCOUNT_VALIDATION_PHRASES[:password]
+
     puts PASSWORD_REQUEST
     @password = gets.chomp
-    @errors.push(ACCOUNT_VALIDATION_PHRASES[:password][:present]) if @password == ''
-    @errors.push(ACCOUNT_VALIDATION_PHRASES[:password][:longer]) if @password.length < RULES[:password][:min]
-    @errors.push(ACCOUNT_VALIDATION_PHRASES[:password][:shorter]) if @password.length > RULES[:password][:max]
+    @errors.push(validations[:present]) if @password == ''
+    @errors.push(validations[:longer]) if @password.length < rules[:min]
+    @errors.push(validations[:shorter]) if @password.length > rules[:max]
   end
 
   def age_input
     rules = RULES[:age]
-
     puts AGE_REQUEST
 
-
     @age = gets.chomp.to_i
-    if @age <= rules[:min] || @age >= rules[:max]
-      @errors.push(ACCOUNT_VALIDATION_PHRASES[:age][:length])
-    end
+    @errors.push(ACCOUNT_VALIDATION_PHRASES[:age][:length]) if @age <= rules[:min] || @age >= rules[:max]
   end
 
   def print_errors

@@ -21,10 +21,9 @@ class BaseCard
     }
   }.freeze
 
-  def initialize(tax, balance, type)
+  def initialize(tax, balance)
     @tax = tax
     @balance = balance
-    @type = type
     @number = CARD_LENGTH.times.map { rand(10) }.join
   end
 

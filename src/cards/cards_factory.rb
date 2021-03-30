@@ -1,15 +1,15 @@
 module CardsFactory
   CARD_TYPES = {
-    USUAL: {
+    usual: {
       name: 'usual',
       start_balance: 50
     },
-    CAPITALIST: {
+    capitalist: {
       name: 'capitalist',
       start_balance: 100
 
     },
-    VIRTUAL: {
+    virtual: {
       name: 'virtual',
       start_balance: 150
     }
@@ -17,21 +17,26 @@ module CardsFactory
 
   class << self
     def create_card(card_type)
-      card_key = card_type.to_sym.upcase
+      card_info = card_init_params(card_type)
 
-      raise WrongCardTypeError unless CARD_TYPES.key?(card_key)
+      init_card(card_type, card_info)
+    end
 
-      card_info = CARD_TYPES.fetch(card_key)
-
-      case card_type
-      when CARD_TYPES[:USUAL][:name]
-        UsualCard.new(UsualCardTax.new, card_info[:start_balance], card_key)
-      when CARD_TYPES[:CAPITALIST][:name]
-        CapitalistCard.new(CapitalistCardTax.new, card_info[:start_balance],
-                           card_key)
-      when CARD_TYPES[:VIRTUAL][:name]
-        VirtualCard.new(VirtualCardTax.new, card_info[:start_balance], card_key)
+    def init_card(type, card_info)
+      case type
+      when CARD_TYPES[:usual][:name]
+        UsualCard.new(UsualCardTax.new, card_info[:start_balance])
+      when CARD_TYPES[:capitalist][:name]
+        CapitalistCard.new(CapitalistCardTax.new, card_info[:start_balance])
+      when CARD_TYPES[:virtual][:name]
+        VirtualCard.new(VirtualCardTax.new, card_info[:start_balance])
+      else
+        raise WrongCardTypeError
       end
+    end
+
+    def card_init_params(card_type)
+      CARD_TYPES[card_type.to_sym]
     end
   end
 end
