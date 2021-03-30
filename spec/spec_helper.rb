@@ -6,6 +6,7 @@ SimpleCov.start do
 end
 
 require_relative '../src/initializer'
+require_relative './helpers/TransfersHelper'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

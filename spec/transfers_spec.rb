@@ -1,14 +1,3 @@
-class TransfersHelper
-  include Transfers
-  include AccountsRegister
-
-  attr_accessor :account_manager
-
-  def initialize
-    @account_manager = nil
-  end
-end
-
 RSpec.describe Transfers do
   subject(:transfer_helper) { TransfersHelper.new }
 
