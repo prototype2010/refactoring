@@ -1,22 +1,3 @@
-ACCOUNT_VALIDATION_PHRASES = {
-  name: {
-    first_letter: 'Your name must not be empty and starts with first upcase letter'
-  },
-  login: {
-    present: 'Login must present',
-    longer: 'Login must be longer then 4 symbols',
-    shorter: 'Login must be shorter then 20 symbols',
-    exists: 'Such account is already exists'
-  },
-  password: {
-    present: 'Password must present',
-    longer: 'Password must be longer then 6 symbols',
-    shorter: 'Password must be shorter then 30 symbols'
-  },
-  age: {
-    length: 'Your Age must be greeter then 23 and lower then 90'
-  }
-}.freeze
 
 RSpec.describe Registration do
   subject(:registration) { described_class.new }
@@ -95,15 +76,15 @@ RSpec.describe Registration do
     end
 
     it 'prints name errors' do
-      ACCOUNT_VALIDATION_PHRASES[:name].each_value do |error_message|
+      [Registration::ACCOUNT_VALIDATION_PHRASES[:name][:first_letter]].each do |error_message|
         expect { registration.start.print_errors }.to output(/#{error_message}/).to_stdout
       end
     end
 
     it 'prints password errors' do
       [
-        ACCOUNT_VALIDATION_PHRASES[:password][:present],
-        ACCOUNT_VALIDATION_PHRASES[:password][:longer]
+        Registration::ACCOUNT_VALIDATION_PHRASES[:password][:present],
+        Registration::ACCOUNT_VALIDATION_PHRASES[:password][:longer]
       ].each do |error_message|
         expect { registration.start.print_errors }.to output(/#{error_message}/).to_stdout
       end
@@ -111,9 +92,9 @@ RSpec.describe Registration do
 
     it 'prints login errors' do
       [
-        ACCOUNT_VALIDATION_PHRASES[:login][:present],
-        ACCOUNT_VALIDATION_PHRASES[:password][:longer],
-        ACCOUNT_VALIDATION_PHRASES[:password][:exists]
+        Registration::ACCOUNT_VALIDATION_PHRASES[:login][:present],
+        Registration::ACCOUNT_VALIDATION_PHRASES[:password][:longer],
+        Registration::ACCOUNT_VALIDATION_PHRASES[:password][:exists]
       ].each do |error_message|
         expect { registration.start.print_errors }.to output(/#{error_message}/).to_stdout
       end
@@ -121,7 +102,7 @@ RSpec.describe Registration do
 
     it 'prints age errors' do
       [
-        ACCOUNT_VALIDATION_PHRASES[:age][:length]
+        Registration::ACCOUNT_VALIDATION_PHRASES[:age][:length]
       ].each do |error_message|
         expect { registration.start.print_errors }.to output(/#{error_message}/).to_stdout
       end
@@ -141,13 +122,13 @@ RSpec.describe Registration do
       it 'prints login errors' do
         expect do
           registration.start.print_errors
-        end.to output(/#{ACCOUNT_VALIDATION_PHRASES[:login][:shorter]}/).to_stdout
+        end.to output(/#{Registration::ACCOUNT_VALIDATION_PHRASES[:login][:shorter]}/).to_stdout
       end
 
       it 'prints password errors' do
         expect do
           registration.start.print_errors
-        end.to output(/#{ACCOUNT_VALIDATION_PHRASES[:password][:shorter]}/).to_stdout
+        end.to output(/#{Registration::ACCOUNT_VALIDATION_PHRASES[:password][:shorter]}/).to_stdout
       end
     end
 
@@ -164,7 +145,7 @@ RSpec.describe Registration do
       end
 
       it 'prints login errors' do
-        expect { registration.start.print_errors }.to output(/#{ACCOUNT_VALIDATION_PHRASES[:login][:exists]}/).to_stdout
+        expect { registration.start.print_errors }.to output(/#{Registration::ACCOUNT_VALIDATION_PHRASES[:login][:exists]}/).to_stdout
       end
     end
   end
