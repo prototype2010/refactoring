@@ -17,7 +17,7 @@ class Registration
       max: 90
     }
   }.freeze
-  
+
   ACCOUNT_VALIDATION_PHRASES = {
     name: {
       first_letter: 'Your name must not be empty and starts with first upcase letter'
@@ -38,8 +38,6 @@ class Registration
 and lower then #{RULES[:age][:max]}"
     }
   }.freeze
-
-  
 
   NAME_REQUEST = 'Enter your name'.freeze
   LOGIN_REQUEST = 'Enter your login'.freeze
@@ -71,30 +69,30 @@ and lower then #{RULES[:age][:max]}"
   end
 
   def login_input
-    login_messages = ACCOUNT_VALIDATION_PHRASES[:login]
-
     puts LOGIN_REQUEST
     @login = gets.chomp
-    @errors.push(login_messages[:present]) if @login.empty?
-    @errors.push('Login must be longer then 4 symbols') if @login.length < RULES[:login][:min]
-    @errors.push('Login must be shorter then 20 symbols') if @login.length > RULES[:login][:max]
-    @errors.push(login_messages[:exists]) if login_exists?(@login)
+    @errors.push(ACCOUNT_VALIDATION_PHRASES[:login][:present]) if @login.empty?
+    @errors.push(ACCOUNT_VALIDATION_PHRASES[:login][:longer]) if @login.length < RULES[:login][:min]
+    @errors.push(ACCOUNT_VALIDATION_PHRASES[:login][:shorter]) if @login.length > RULES[:login][:max]
+    @errors.push(ACCOUNT_VALIDATION_PHRASES[:login][:exists]) if login_exists?(@login)
   end
 
   def password_input
     puts PASSWORD_REQUEST
     @password = gets.chomp
-    @errors.push('Password must present') if @password == ''
-    @errors.push('Password must be longer then 6 symbols') if @password.length < RULES[:password][:min]
-    @errors.push('Password must be shorter then 30 symbols') if @password.length > RULES[:password][:max]
+    @errors.push(ACCOUNT_VALIDATION_PHRASES[:password][:present]) if @password == ''
+    @errors.push(ACCOUNT_VALIDATION_PHRASES[:password][:longer]) if @password.length < RULES[:password][:min]
+    @errors.push(ACCOUNT_VALIDATION_PHRASES[:password][:shorter]) if @password.length > RULES[:password][:max]
   end
 
   def age_input
-    age_messages =
+    rules = RULES[:age]
 
     puts AGE_REQUEST
+
+
     @age = gets.chomp.to_i
-    if @age <= RULES[:age][:min] || @age >= RULES[:age][:max]
+    if @age <= rules[:min] || @age >= rules[:max]
       @errors.push('Your Age must be greeter then 23 and lower then 90')
     end
   end
