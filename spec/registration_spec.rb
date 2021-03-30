@@ -1,10 +1,3 @@
-ASK_PHRASES = {
-  name: 'Enter your name',
-  login: 'Enter your login',
-  password: 'Enter your password',
-  age: 'Enter your age'
-}.freeze
-
 ACCOUNT_VALIDATION_PHRASES = {
   name: {
     first_letter: 'Your name must not be empty and starts with first upcase letter'
@@ -40,19 +33,19 @@ RSpec.describe Registration do
     end
 
     it 'requests name' do
-      expect { registration.start }.to output(/#{ASK_PHRASES[:name]}/).to_stdout
+      expect { registration.start }.to output(/#{Registration::NAME_REQUEST}/).to_stdout
     end
 
     it 'requests age' do
-      expect { registration.start }.to output(/#{ASK_PHRASES[:login]}/).to_stdout
+      expect { registration.start }.to output(/#{Registration::AGE_REQUEST}/).to_stdout
     end
 
     it 'requests login' do
-      expect { registration.start }.to output(/#{ASK_PHRASES[:password]}/).to_stdout
+      expect { registration.start }.to output(/#{Registration::LOGIN_REQUEST}/).to_stdout
     end
 
     it 'requests password' do
-      expect { registration.start }.to output(/#{ASK_PHRASES[:age]}/).to_stdout
+      expect { registration.start }.to output(/#{Registration::PASSWORD_REQUEST}/).to_stdout
     end
 
     it 'returns valid object' do
