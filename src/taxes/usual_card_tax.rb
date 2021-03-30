@@ -1,8 +1,8 @@
 class UsualCardTax < BaseCardTax
   def initialize
     super
-    @withdraw = PercentageTax.new(Constants::TAXES[:usual][:withdraw])
-    @put = PercentageTax.new(Constants::TAXES[:usual][:put])
-    @sender = FixedTax.new(Constants::TAXES[:usual][:sender])
+    @withdraw = PercentageTax.new(BaseTax::TAXES[:usual][:withdraw])
+    @put = PercentageTax.new(BaseTax::TAXES[:usual][:put])
+    @sender = FixedTax.new(BaseTax::TAXES[:usual][:sender])
   end
 end
