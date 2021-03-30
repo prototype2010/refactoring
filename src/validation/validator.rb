@@ -5,8 +5,8 @@ module Validator
   end
 
   def validate_send(card, amount)
-    raise NotEnoughMoney unless send_possible?(amount)
-    raise NotEnoughMoney unless card.put_possible?(amount)
     raise CardInstanceExpectedError unless card.class.ancestors.include?(BaseCard)
+    raise NotEnoughMoney unless card.send_possible?(amount)
+    raise NotEnoughMoney unless card.put_possible?(amount)
   end
 end
