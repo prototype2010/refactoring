@@ -12,6 +12,12 @@ RSpec/MultipleExpectations:
 RSpec/ExampleLength:
   Max: 10
 
+Metrics/MethodLength:
+  Max: 20
+
+RSpec/SubjectStub:
+  Enabled: false
+
 RSpec/MessageSpies:
   Enabled: false
 
@@ -19,9 +25,16 @@ Metrics/BlockLength:
   Exclude:
     - 'Gemfile'
     - 'spec/**/*.rb'
+RSpec/AnyInstance:
+  Exclude:
+    - 'spec/**/*.rb'
 
 Metrics/LineLength:
   Max: 120
+  IgnoredPatterns: ['puts','output']
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
 
 Documentation:
   Enabled: false
